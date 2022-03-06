@@ -1,7 +1,7 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({listings, filterValue}) {
+function ListingsContainer({listings, filterValue, removeListing}) {
 
   function handleListings() {
 
@@ -12,7 +12,8 @@ function ListingsContainer({listings, filterValue}) {
         id={listing.id} 
         description={listing.description} 
         location={listing.location} 
-        image={listing.image}/>)
+        image={listing.image}
+        removeListing={removeListing}/>)
     })
     .filter( (listing) => {
 

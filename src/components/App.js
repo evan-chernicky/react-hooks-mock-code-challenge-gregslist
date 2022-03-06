@@ -24,11 +24,32 @@ function App() {
 
   }, [])
 
+  function removeListing(id) {
+
+    const newListings = listings.filter(listing => {
+      if (listing.id !== id) {
+        return listing
+      }      
+    })
+
+    setListings(newListings)
+
+
+
+    fetch(`${API}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8' 
+       },
+    })
+
+  }
+
 
   return (
     <div className="app">
       <Header onFilterClick={setFilter} />
-      <ListingsContainer listings={listings} filterValue={filterValue}/>
+      <ListingsContainer listings={listings} filterValue={filterValue} removeListing={removeListing}/>
     </div>
   );
 }
